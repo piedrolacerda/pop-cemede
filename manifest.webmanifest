@@ -1,7 +1,7 @@
 {
- "name": "POP Espirometria · CEMEDE",
- "short_name": "POP CEMEDE",
- "description": "Procedimento Operacional Padrão de Espirometria (KoKo PFT) da CEMEDE",
+ "name": "Biblioteca de POPs · CEMEDE",
+ "short_name": "POPs CEMEDE",
+ "description": "Procedimentos Operacionais Padrão da CEMEDE em livros digitais folheáveis",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",
