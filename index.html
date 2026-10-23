@@ -1780,7 +1780,11 @@ p.txt{margin:0 0 12px;line-height:1.6;font-size:15px}
 
   // ---------------- offline / instalar ----------------
   const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
-  if('serviceWorker' in navigator && location.protocol==='https:'){navigator.serviceWorker.register('sw.js').catch(()=>{});}
+  if('serviceWorker' in navigator && location.protocol==='https:'){
+    const hadController=!!navigator.serviceWorker.controller; let reloaded=false;
+    navigator.serviceWorker.addEventListener('controllerchange',()=>{if(hadController&&!reloaded){reloaded=true;location.reload();}});
+    navigator.serviceWorker.register('sw.js').then(r=>{try{r.update();}catch(e){}}).catch(()=>{});
+  }
   let deferredPrompt=null;
   const inst=document.getElementById('install'), instGo=document.getElementById('installGo'), instTxt=document.getElementById('installTxt');
   const isIOS=/iPhone|iPad|iPod/.test(navigator.userAgent);
